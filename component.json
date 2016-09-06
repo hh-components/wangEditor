@@ -1,0 +1,8 @@
+{
+    "repos": "https://github.com/wangfupeng1988/wangEditor",
+    "version": "v2.1.18",
+    "description": "rich text editor",
+    "umd2commonjs": true,
+    "name": "wangEditor",
+    "main": "wangEditor.js"
+}
