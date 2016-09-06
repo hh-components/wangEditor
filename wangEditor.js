@@ -2,7 +2,7 @@
     if (typeof window.define === 'function') {
         if (window.define.amd) {
             // AMD模式
-            window.define('wangEditor', ["jquery"], factory);
+            window.define('wangEditor', ["Zepto"], factory);
         } else if (window.define.cmd) {
             // CMD模式
             window.define(function (require, exports, module) {
@@ -18,8 +18,8 @@
         // 引用 css —— webapck
         window.wangEditorCssPath ? require(window.wangEditorCssPath) : require('../css/wangEditor.css');
         module.exports = factory(
-            // 传入 jquery ，支持使用 npm 方式或者自己定义jquery的路径
-            window.wangEditorJQueryPath ? require(window.wangEditorJQueryPath) : require('jquery')
+            // 传入 Zepto ，支持使用 npm 方式或者自己定义Zepto的路径
+            window.wangEditorJQueryPath ? require(window.wangEditorJQueryPath) : require('Zepto')
         );
     } else {
         // 全局模式
@@ -27,8 +27,8 @@
     }
 })(function($){
     
-    // 验证是否引用jquery
-    if (!$ || !$.fn || !$.fn.jquery) {
+    // 验证是否引用Zepto
+    if (!$ || !$.fn || !$.fn.Zepto) {
         alert('在引用wangEditor.js之前，先引用jQuery，否则无法使用 wangEditor');
         return;
     }
@@ -722,7 +722,7 @@ _e(function (E, $) {
         var $elems = $(selector);
         var result = false;
 
-        // 用jquery查找 selector 所有对象，如果其中有一个和传入 elem 相同，则证明 elem 符合 selector
+        // 用Zepto查找 selector 所有对象，如果其中有一个和传入 elem 相同，则证明 elem 符合 selector
         $elems.each(function () {
             if (this === elem) {
                 result = true;
@@ -2644,14 +2644,14 @@ _e(function (E, $) {
             var result;
 
             if (valueNodeName === 'div') {
-                // div 生成的编辑器，取值、赋值，都直接触发jquery的html方法
+                // div 生成的编辑器，取值、赋值，都直接触发Zepto的html方法
                 result = $.fn.html.call($txt, html);
             }
 
             // textarea 生成的编辑器，则需要考虑赋值时，也给textarea赋值
 
             if (html === undefined) {
-                // 取值，直接触发jquery原生html方法
+                // 取值，直接触发Zepto原生html方法
                 result = $.fn.html.call($txt);
 
                 // 替换 html 中，src和href属性中的 & 字符。
