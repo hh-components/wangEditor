@@ -2,11 +2,11 @@
 (function (factory) {
     // AMD模式
     
-    module.exports = factory(require('jquery')) || module.exports;;
+    module.exports = factory(require('zepto')) || module.exports;;
 }(function ($) {
-    // 验证是否引用jquery
-    if (!$ || !$.fn || !$.fn.jquery) {
-        alert('在引用wangEditor.js之前\uFF0C先引用jQuery\uFF0C否则无法使用 wangEditor');
+    // 验证是否引用zepto
+    if (!$ || !$.fn || !$.fn.zepto) {
+        alert('在引用wangEditor.js之前\uFF0C先引用zepto\uFF0C否则无法使用 wangEditor');
         return;
     }
     // 定义扩展函数
@@ -571,7 +571,7 @@
             var elem = this;
             var $elems = $(selector);
             var result = false;
-            // 用jquery查找 selector 所有对象，如果其中有一个和传入 elem 相同，则证明 elem 符合 selector
+            // 用zepto查找 selector 所有对象，如果其中有一个和传入 elem 相同，则证明 elem 符合 selector
             $elems.each(function () {
                 if (this === elem) {
                     result = true;
@@ -2176,12 +2176,12 @@
             $txt.html = function (html) {
                 var result;
                 if (valueNodeName === 'div') {
-                    // div 生成的编辑器，取值、赋值，都直接触发jquery的html方法
+                    // div 生成的编辑器，取值、赋值，都直接触发zepto的html方法
                     result = $.fn.html.call($txt, html);
                 }
                 // textarea 生成的编辑器，则需要考虑赋值时，也给textarea赋值
                 if (html === undefined) {
-                    // 取值，直接触发jquery原生html方法
+                    // 取值，直接触发zepto原生html方法
                     result = $.fn.html.call($txt);
                     // 替换 html 中，src和href属性中的 & 字符。
                     // 因为 .html() 或者 .innerHTML 会把所有的 & 字符都改成 &amp; 但是 src 和 href 中的要保持 &
